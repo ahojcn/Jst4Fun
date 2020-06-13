@@ -27,6 +27,8 @@ namespace Jst4Fun
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
             //允许一个或多个来源可以跨域
             services.AddCors(options =>
             {
@@ -49,7 +51,11 @@ namespace Jst4Fun
 
             app.UseRouting();
             app.UseCors("AllowSpecificOrigins");
-            //app.UseStaticFiles();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseSession();
+            app.UseFileServer();
 
             //app.UseAuthorization();
 

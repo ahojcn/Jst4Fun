@@ -1,3 +1,7 @@
+**/uploads/**
+*.jpg
+*.JPG
+
 # globs
 Makefile.in
 *.userprefs
