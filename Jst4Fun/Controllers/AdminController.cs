@@ -26,6 +26,7 @@ namespace Jst4Fun.Controllers
             {
                 var token = Guid.NewGuid().ToString();
 
+                //HttpContext.Session.Timeout
                 HttpContext.Session.SetString(req.email, token);
 
                 Fun.SendEMail(req.email, token);
@@ -126,19 +127,22 @@ namespace Jst4Fun.Controllers
 
             try
             {
-                var results = Fun.GetSqlConn().Query($"select * from `match` limit {(page_index - 1) * page_size}, {page_size}");
+                // var results = Fun.GetSqlConn().Query($"select * from `match` limit {(page_index - 1) * page_size}, {page_size}");
+                var results = Fun.GetSqlConn().Query($"select * from `match`");
                 MatchProfile[] mp_arr = new MatchProfile[results.Count()];
                 int i = 0;
                 foreach (var match in results)
                 {
                     MatchProfile mp = new MatchProfile();
-                    Console.WriteLine($"select s.id, s.name, s.nick_name, s.gender, s.email, sm.is_upload, sm.create_time, sm.upload_file_time, sm.upload_file_path, sm.is_awards, sm.awards from student_match sm inner join `student` s on sm.id = {match.id} and sm.sid = s.id");
+                    // Console.WriteLine($"select s.id, s.name, s.nick_name, s.gender, s.email, sm.is_upload, sm.create_time, sm.upload_file_time, sm.upload_file_path, sm.is_awards, sm.awards from student_match sm inner join `student` s on sm.id = {match.id} and sm.sid = s.id");
                     var stus = Fun.GetSqlConn().Query($"select s.id, s.name, s.nick_name, s.gender, s.email, sm.is_upload, sm.create_time, sm.upload_file_time, sm.upload_file_path, sm.is_awards, sm.awards from student_match sm inner join `student` s on sm.mid = {match.id} and sm.sid = s.id");
                     mp.match = match;
                     mp.stus = stus;
                     mp_arr[i++] = mp;
                 }
                 resp.data = mp_arr;
+                resp.status = 0;
+                resp.msg = "ok";
             }
             catch (Exception ex)
             {

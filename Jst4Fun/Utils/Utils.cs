@@ -189,7 +189,7 @@ namespace Jst4Fun.Utils
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
             Console.WriteLine("send");
         }

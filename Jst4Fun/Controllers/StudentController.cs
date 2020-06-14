@@ -19,7 +19,7 @@ using Jst4Fun.Models;
 
 namespace Jst4Fun.Controllers
 {
-    // [EnableCors("any")]
+    [EnableCors("any")]
     [Route("stu")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -112,7 +112,8 @@ namespace Jst4Fun.Controllers
 
             try
             {
-                var news = Fun.GetSqlConn().Query($"select * from news limit {(page_index - 1) * page_size}, {page_size}");
+                // var news = Fun.GetSqlConn().Query($"select * from news limit {(page_index - 1) * page_size}, {page_size}");
+                var news = Fun.GetSqlConn().Query($"select * from news");
                 resp.data = news;
                 resp.status = 0;
                 resp.msg = "ok";
@@ -136,7 +137,8 @@ namespace Jst4Fun.Controllers
 
             try
             {
-                var matchs = Fun.GetSqlConn().Query($"select * from `match` where is_active = {true} limit {(page_index - 1) * page_size}, {page_size}");
+                // var matchs = Fun.GetSqlConn().Query($"select * from `match` where is_active = {true} limit {(page_index - 1) * page_size}, {page_size}");
+                var matchs = Fun.GetSqlConn().Query($"select * from `match`");
                 resp.data = matchs;
                 resp.status = 0;
                 resp.msg = "ok";
