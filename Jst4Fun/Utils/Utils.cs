@@ -182,7 +182,7 @@ namespace Jst4Fun.Utils
             client.Host = "smtp.qq.com";
             client.Port = 587;
             client.EnableSsl = false;
-            client.Credentials = new NetworkCredential("ahojcn@qq.com", "uqlkjklgvfbkeiad");
+            client.Credentials = new NetworkCredential("ahojcn@qq.com", "vdergmndgppzdjhj");
             try
             {
                 client.SendAsync(mail_msg, text);

@@ -24,6 +24,7 @@ namespace Jst4Fun.Controllers
 
             try
             {
+                // 212q3123123123123123123sfasdfasdfwerqwe
                 var token = Guid.NewGuid().ToString();
 
                 //HttpContext.Session.Timeout

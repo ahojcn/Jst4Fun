@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Notification } from 'element-ui'
 
 const service = axios.create({
-    baseURL: 'http://localhost:8700',
+    baseURL: 'http://127.0.0.1:8700',
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8'

@@ -11,6 +11,8 @@ import StuIndex from '@/components/StuIndex'
 import AdminLogin from '@/components/AdminLogin'
 import AdminIndex from '@/components/AdminIndex'
 
+import Login from '@/components/Login'
+
 Vue.use(Router)
 
 export default new Router({
@@ -23,6 +25,11 @@ export default new Router({
             name: 'StuLogin',
             component: StuLogin,
         },
+      {
+        path: '/Login',
+        name: 'Login',
+        component: Login,
+      },
         {
             path: '/StuRegister',
             name: 'StuRegister',
